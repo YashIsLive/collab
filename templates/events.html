@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Events - Campus Pulse</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+<div class="layout">
+
+    <aside class="sidebar">
+
+        <h1>Campus<span>Pulse</span></h1>
+
+        <nav>
+
+            <a href="/">📊 Dashboard</a>
+
+            <a href="/events" class="active">
+                📅 Events
+            </a>
+
+            <a href="/clubs">
+                🏫 Clubs
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <main class="main">
+
+        <header>
+
+            <div>
+
+                <p class="eyebrow">
+                    CAMPUS ACTIVITIES
+                </p>
+
+                <h2>Events</h2>
+
+                <p class="subtitle">
+                    Discover what's happening around campus.
+                </p>
+
+            </div>
+
+        </header>
+
+
+        <!-- ADD EVENT -->
+
+        <section class="card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <h3>Add New Event</h3>
+
+                    <p>
+                        Add an event to the campus calendar.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <form id="eventForm">
+
+                <input
+                    type="text"
+                    id="eventName"
+                    placeholder="Event name"
+                    required
+                >
+
+                <select id="eventCategory">
+
+                    <option value="Technology">
+                        Technology
+                    </option>
+
+                    <option value="Sports">
+                        Sports
+                    </option>
+
+                    <option value="Cultural">
+                        Cultural
+                    </option>
+
+                    <option value="Arts">
+                        Arts
+                    </option>
+
+                </select>
+
+
+                <input
+                    type="number"
+                    id="eventParticipants"
+                    placeholder="Participants"
+                    min="0"
+                    value="0"
+                >
+
+                <button type="submit">
+                    Add Event
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <!-- EVENTS -->
+
+        <section class="card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <h3>All Events</h3>
+
+                    <p>
+                        Events sorted by participation.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div id="eventsList"
+                 class="event-list">
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>
