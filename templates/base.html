@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}Campus Pulse{% endblock %}</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+    <link rel="script"
+          href = "{{ url_for('static', filename='js/script.js') }}">
+</head>
+
+<body>
+
+<div class="layout">
+
+    <aside class="sidebar">
+
+        <h1>Campus<span>Pulse</span></h1>
+
+        <nav>
+
+            <a href="/"
+               class="{% if request.path == '/' %}active{% endif %}">
+                📊 Dashboard
+            </a>
+
+            <a href="/events"
+               class="{% if request.path == '/events' %}active{% endif %}">
+                📅 Events
+            </a>
+
+            <a href="/clubs"
+               class="{% if request.path == '/clubs' %}active{% endif %}">
+                🏫 Clubs
+            </a>
+
+            <a href="/announcements"
+               class="{% if request.path == '/announcements' %}active{% endif %}">
+                📢 Announcements
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+            <p>Campus Intelligence</p>
+            <small>v1.0</small>
+        </div>
+
+    </aside>
+
+
+    <main class="main">
+
+        {% block content %}
+        {% endblock %}
+
+    </main>
+
+</div>
+
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>

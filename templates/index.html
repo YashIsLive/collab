@@ -1,177 +1,177 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% block title %}Dashboard - Campus Pulse{% endblock %}
 
-    <title>Campus Pulse</title>
+{% block content %}
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
+<header>
 
-<body>
+    <div>
+        <p class="eyebrow">CAMPUS OVERVIEW</p>
 
-<div class="layout">
+        <h2>Good morning 👋</h2>
 
-    <aside class="sidebar">
+        <p class="subtitle">
+            Here's what's happening around campus.
+        </p>
+    </div>
 
-        <h1>Campus<span>Pulse</span></h1>
+    <div class="status">
+        <span></span>
+        Live
+    </div>
 
-        <nav>
-            <a href="/" class="active">📊 Dashboard</a>
-            <a href="/events">📅 Events</a>
-            <a href="/clubs">🏫 Clubs</a>
-        </nav>
+</header>
 
-        <div class="sidebar-bottom">
-            <p>Campus Intelligence</p>
-            <small>v1.0</small>
+
+<!-- STAT CARDS -->
+
+<section class="stats">
+
+    <div class="card stat-card">
+
+        <div class="icon">📅</div>
+
+        <div>
+            <p>Total Events</p>
+            <h3 id="eventsCount">--</h3>
         </div>
 
-    </aside>
+    </div>
 
 
-    <main class="main">
+    <div class="card stat-card">
 
-        <header>
+        <div class="icon">👥</div>
+
+        <div>
+            <p>Participants</p>
+            <h3 id="participantsCount">--</h3>
+        </div>
+
+    </div>
+
+
+    <div class="card stat-card">
+
+        <div class="icon">🏫</div>
+
+        <div>
+            <p>Active Clubs</p>
+            <h3 id="clubsCount">--</h3>
+        </div>
+
+    </div>
+
+
+    <div class="card stat-card">
+
+        <div class="icon">🎓</div>
+
+        <div>
+            <p>Club Members</p>
+            <h3 id="membersCount">--</h3>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- MAIN CONTENT -->
+
+<section class="grid">
+
+    <div class="card chart-card">
+
+        <div class="card-header">
 
             <div>
-                <p class="eyebrow">CAMPUS OVERVIEW</p>
-                <h2>Good morning 👋</h2>
-                <p class="subtitle">
-                    Here's what's happening around campus.
-                </p>
+                <h3>Event Participation</h3>
+                <p>Participation across campus events</p>
             </div>
 
-            <div class="status">
-                <span></span>
-                Live
+        </div>
+
+        <div id="eventChart" class="bar-chart"></div>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="card-header">
+
+            <div>
+                <h3>Quick Actions</h3>
+                <p>Manage campus data</p>
             </div>
 
-        </header>
+        </div>
+
+        <div class="actions">
+
+            <a href="/events" class="action">
+                <strong>📅 Events</strong>
+                <span>View and add events →</span>
+            </a>
+
+            <a href="/clubs" class="action">
+                <strong>🏫 Clubs</strong>
+                <span>View and add clubs →</span>
+            </a>
+
+            <a href="/announcements" class="action">
+                <strong>📢 Announcements</strong>
+                <span>Share club news →</span>
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
 
 
-        <!-- STAT CARDS -->
+<!-- TRENDING -->
 
-        <section class="stats">
+<section class="card">
 
-            <div class="card stat-card">
-                <div class="icon">📅</div>
+    <div class="card-header">
 
-                <div>
-                    <p>Total Events</p>
-                    <h3 id="eventsCount">--</h3>
-                </div>
-            </div>
+        <div>
+            <h3>Trending Events 🔥</h3>
+            <p>Most participated events</p>
+        </div>
 
+        <a href="/events">View all →</a>
 
-            <div class="card stat-card">
-                <div class="icon">👥</div>
+    </div>
 
-                <div>
-                    <p>Participants</p>
-                    <h3 id="participantsCount">--</h3>
-                </div>
-            </div>
+    <div id="trendingEvents" class="event-list"></div>
+
+</section>
 
 
-            <div class="card stat-card">
-                <div class="icon">🏫</div>
+<!-- CLUB NEWS -->
 
-                <div>
-                    <p>Active Clubs</p>
-                    <h3 id="clubsCount">--</h3>
-                </div>
-            </div>
+<section class="card">
 
+    <div class="card-header">
 
-            <div class="card stat-card">
-                <div class="icon">🎓</div>
+        <div>
+            <h3>Latest Club News 📢</h3>
+            <p>Recent announcements from campus clubs</p>
+        </div>
 
-                <div>
-                    <p>Club Members</p>
-                    <h3 id="membersCount">--</h3>
-                </div>
-            </div>
+        <a href="/announcements">View all →</a>
 
-        </section>
+    </div>
 
+    <div id="dashboardAnnouncements"
+         class="event-list">
+    </div>
 
-        <!-- MAIN CONTENT -->
+</section>
 
-        <section class="grid">
-
-            <div class="card chart-card">
-
-                <div class="card-header">
-
-                    <div>
-                        <h3>Event Participation</h3>
-                        <p>Participation across campus events</p>
-                    </div>
-
-                </div>
-
-                <div id="eventChart" class="bar-chart"></div>
-
-            </div>
-
-
-            <div class="card">
-
-                <div class="card-header">
-
-                    <div>
-                        <h3>Quick Actions</h3>
-                        <p>Manage campus data</p>
-                    </div>
-
-                </div>
-
-                <div class="actions">
-
-                    <a href="/events" class="action">
-                        <strong>📅 Events</strong>
-                        <span>View and add events →</span>
-                    </a>
-
-                    <a href="/clubs" class="action">
-                        <strong>🏫 Clubs</strong>
-                        <span>View and add clubs →</span>
-                    </a>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- TRENDING -->
-
-        <section class="card">
-
-            <div class="card-header">
-
-                <div>
-                    <h3>Trending Events 🔥</h3>
-                    <p>Most participated events</p>
-                </div>
-
-                <a href="/events">View all →</a>
-
-            </div>
-
-            <div id="trendingEvents" class="event-list"></div>
-
-        </section>
-
-    </main>
-
-</div>
-
-<script src="{{ url_for('static', filename='script.js') }}"></script>
-
-</body>
-</html>
+{% endblock %}

@@ -1,170 +1,119 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
 
-<head>
+{% block title %}Clubs - Campus Pulse{% endblock %}
 
-    <meta charset="UTF-8">
+{% block content %}
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+<header>
 
-    <title>Clubs - Campus Pulse</title>
+    <div>
 
-    <link rel="stylesheet"
-          href="{{ url_for('static', filename='style.css') }}">
+        <p class="eyebrow">
+            STUDENT ORGANIZATIONS
+        </p>
 
-</head>
+        <h2>Clubs</h2>
 
+        <p class="subtitle">
+            Explore the campus club ecosystem.
+        </p>
 
-<body>
+    </div>
 
-<div class="layout">
+</header>
 
-    <aside class="sidebar">
 
-        <h1>Campus<span>Pulse</span></h1>
+<!-- ADD CLUB -->
 
-        <nav>
+<section class="card">
 
-            <a href="/">
-                📊 Dashboard
-            </a>
+    <div class="card-header">
 
-            <a href="/events">
-                📅 Events
-            </a>
+        <div>
 
-            <a href="/clubs"
-               class="active">
-                🏫 Clubs
-            </a>
+            <h3>Add New Club</h3>
 
-        </nav>
+            <p>
+                Create a new campus organization.
+            </p>
 
-    </aside>
+        </div>
 
+    </div>
 
-    <main class="main">
 
-        <header>
+    <form id="clubForm">
 
-            <div>
+        <input
+            type="text"
+            id="clubName"
+            placeholder="Club name"
+            required
+        >
 
-                <p class="eyebrow">
-                    STUDENT ORGANIZATIONS
-                </p>
 
-                <h2>Clubs</h2>
+        <select id="clubCategory">
 
-                <p class="subtitle">
-                    Explore the campus club ecosystem.
-                </p>
+            <option value="Technology">
+                Technology
+            </option>
 
-            </div>
+            <option value="Sports">
+                Sports
+            </option>
 
-        </header>
+            <option value="Cultural">
+                Cultural
+            </option>
 
+            <option value="Arts">
+                Arts
+            </option>
 
-        <!-- ADD CLUB -->
+        </select>
 
-        <section class="card">
 
-            <div class="card-header">
+        <input
+            type="number"
+            id="clubMembers"
+            placeholder="Members"
+            min="0"
+            value="0"
+        >
 
-                <div>
 
-                    <h3>Add New Club</h3>
+        <button type="submit">
+            Add Club
+        </button>
 
-                    <p>
-                        Create a new campus organization.
-                    </p>
+    </form>
 
-                </div>
+</section>
 
-            </div>
 
+<!-- CLUB LIST -->
 
-            <form id="clubForm">
+<section class="card">
 
-                <input
-                    type="text"
-                    id="clubName"
-                    placeholder="Club name"
-                    required
-                >
+    <div class="card-header">
 
+        <div>
 
-                <select id="clubCategory">
+            <h3>Campus Clubs</h3>
 
-                    <option value="Technology">
-                        Technology
-                    </option>
+            <p>
+                Clubs ranked by membership.
+            </p>
 
-                    <option value="Sports">
-                        Sports
-                    </option>
+        </div>
 
-                    <option value="Cultural">
-                        Cultural
-                    </option>
+    </div>
 
-                    <option value="Arts">
-                        Arts
-                    </option>
 
-                </select>
+    <div id="clubsList"
+         class="event-list">
+    </div>
 
+</section>
 
-                <input
-                    type="number"
-                    id="clubMembers"
-                    placeholder="Members"
-                    min="0"
-                    value="0"
-                >
-
-
-                <button type="submit">
-                    Add Club
-                </button>
-
-            </form>
-
-        </section>
-
-
-        <!-- CLUB LIST -->
-
-        <section class="card">
-
-            <div class="card-header">
-
-                <div>
-
-                    <h3>Campus Clubs</h3>
-
-                    <p>
-                        Clubs ranked by membership.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div id="clubsList"
-                 class="event-list">
-            </div>
-
-        </section>
-
-    </main>
-
-</div>
-
-
-<script src="{{ url_for('static', filename='script.js') }}"></script>
-
-</body>
-
-</html>
+{% endblock %}

@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+
+{% block title %}Announcements - Campus Pulse{% endblock %}
+
+{% block content %}
+
+<header>
+
+    <div>
+
+        <p class="eyebrow">
+            CLUB COMMUNICATION
+        </p>
+
+        <h2>Announcements 📢</h2>
+
+        <p class="subtitle">
+            Share important news and updates from campus clubs.
+        </p>
+
+    </div>
+
+</header>
+
+
+<!-- CREATE ANNOUNCEMENT -->
+
+<section class="card">
+
+    <div class="card-header">
+
+        <div>
+
+            <h3>Share Club News</h3>
+
+            <p>
+                Post an announcement for students.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <form id="announcementForm">
+
+        <input
+            type="text"
+            id="announcementClub"
+            placeholder="Club name"
+            required
+        >
+
+
+        <input
+            type="text"
+            id="announcementTitle"
+            placeholder="Announcement title"
+            required
+        >
+
+
+        <input
+            type="text"
+            id="announcementMessage"
+            placeholder="Write your club news..."
+            required
+        >
+
+
+        <button type="submit">
+            Publish News
+        </button>
+
+    </form>
+
+</section>
+
+
+<!-- ANNOUNCEMENTS -->
+
+<section class="card">
+
+    <div class="card-header">
+
+        <div>
+
+            <h3>Club News</h3>
+
+            <p>
+                Latest announcements from campus clubs.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div id="announcementsList"
+         class="event-list">
+    </div>
+
+</section>
+
+{% endblock %}

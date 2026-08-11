@@ -1,164 +1,119 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
 
-<head>
+{% block title %}Events - Campus Pulse{% endblock %}
 
-    <meta charset="UTF-8">
+{% block content %}
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+<header>
 
-    <title>Events - Campus Pulse</title>
+    <div>
 
-    <link rel="stylesheet"
-          href="{{ url_for('static', filename='style.css') }}">
+        <p class="eyebrow">
+            CAMPUS ACTIVITIES
+        </p>
 
-</head>
+        <h2>Events</h2>
 
+        <p class="subtitle">
+            Discover what's happening around campus.
+        </p>
 
-<body>
+    </div>
 
-<div class="layout">
+</header>
 
-    <aside class="sidebar">
 
-        <h1>Campus<span>Pulse</span></h1>
+<!-- ADD EVENT -->
 
-        <nav>
+<section class="card">
 
-            <a href="/">Dashboard</a>
+    <div class="card-header">
 
-            <a href="/events" class="active">
-                📅 Events
-            </a>
+        <div>
 
-            <a href="/clubs">
-                🏫 Clubs
-            </a>
+            <h3>Add New Event</h3>
 
-        </nav>
+            <p>
+                Add an event to the campus calendar.
+            </p>
 
-    </aside>
+        </div>
 
+    </div>
 
-    <main class="main">
 
-        <header>
+    <form id="eventForm">
 
-            <div>
+        <input
+            type="text"
+            id="eventName"
+            placeholder="Event name"
+            required
+        >
 
-                <p class="eyebrow">
-                    CAMPUS ACTIVITIES
-                </p>
 
-                <h2>Events</h2>
+        <select id="eventCategory">
 
-                <p class="subtitle">
-                    Discover what's happening around campus.
-                </p>
+            <option value="Technology">
+                Technology
+            </option>
 
-            </div>
+            <option value="Sports">
+                Sports
+            </option>
 
-        </header>
+            <option value="Cultural">
+                Cultural
+            </option>
 
+            <option value="Arts">
+                Arts
+            </option>
 
-        <!-- ADD EVENT -->
+        </select>
 
-        <section class="card">
 
-            <div class="card-header">
+        <input
+            type="number"
+            id="eventParticipants"
+            placeholder="Participants"
+            min="0"
+            value="0"
+        >
 
-                <div>
 
-                    <h3>Add New Event</h3>
+        <button type="submit">
+            Add Event
+        </button>
 
-                    <p>
-                        Add an event to the campus calendar.
-                    </p>
+    </form>
 
-                </div>
+</section>
 
-            </div>
 
+<!-- EVENTS -->
 
-            <form id="eventForm">
+<section class="card">
 
-                <input
-                    type="text"
-                    id="eventName"
-                    placeholder="Event name"
-                    required
-                >
+    <div class="card-header">
 
-                <select id="eventCategory">
+        <div>
 
-                    <option value="Technology">
-                        Technology
-                    </option>
+            <h3>All Events</h3>
 
-                    <option value="Sports">
-                        Sports
-                    </option>
+            <p>
+                Events sorted by participation.
+            </p>
 
-                    <option value="Cultural">
-                        Cultural
-                    </option>
+        </div>
 
-                    <option value="Arts">
-                        Arts
-                    </option>
+    </div>
 
-                </select>
 
+    <div id="eventsList"
+         class="event-list">
+    </div>
 
-                <input
-                    type="number"
-                    id="eventParticipants"
-                    placeholder="Participants"
-                    min="0"
-                    value="0"
-                >
+</section>
 
-                <button type="submit">
-                    Add Event
-                </button>
-
-            </form>
-
-        </section>
-
-
-        <!-- EVENTS -->
-
-        <section class="card">
-
-            <div class="card-header">
-
-                <div>
-
-                    <h3>All Events</h3>
-
-                    <p>
-                        Events sorted by participation.
-                    </p>
-
-                </div>
-
-            </div>
-
-            <div id="eventsList"
-                 class="event-list">
-            </div>
-
-        </section>
-
-    </main>
-
-</div>
-
-
-<script src="{{ url_for('static', filename='script.js') }}"></script>
-
-</body>
-
-</html>
+{% endblock %}
